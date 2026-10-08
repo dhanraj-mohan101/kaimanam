@@ -927,3 +927,132 @@ footer {
     font-size: 22px;
     cursor: pointer;
 }
+/* Customer Feedback */
+
+.reviews-section {
+    padding: 70px 8%;
+    background: #fff8ef;
+    text-align: center;
+    scroll-margin-top: 100px;
+}
+
+.reviews-section .section-heading span {
+    display: block;
+    line-height: 1.7;
+}
+
+.review-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.review-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 24px;
+    border-radius: 10px;
+    background: #267344;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.review-button:hover {
+    background: #19532f;
+}
+
+.review-button:focus-visible {
+    outline: 3px solid #b65d16;
+    outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+    .reviews-section {
+        padding: 50px 6%;
+    }
+
+    .review-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .review-button {
+        padding: 14px 16px;
+    }
+}
+
+/* Feedback Star Rating */
+
+.feedback-rating {
+    border: none;
+    padding: 0;
+    margin: 28px auto 0;
+    min-width: 0;
+}
+
+.feedback-rating legend {
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.rating-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rating-options label {
+    position: relative;
+    cursor: pointer;
+}
+
+.rating-options input,
+.rating-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.rating-options label>span:first-of-type {
+    display: inline-block;
+    color: #767676;
+    font-size: 42px;
+    line-height: 1.2;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rating-options label:hover>span:first-of-type {
+    transform: scale(1.1);
+}
+
+.rating-options label.selected>span:first-of-type {
+    color: #b76e00;
+}
+
+.rating-options input:focus-visible+span {
+    outline: 3px solid #267344;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+#ratingStatus {
+    margin-top: 14px;
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+}
