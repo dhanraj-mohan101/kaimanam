@@ -374,3 +374,63 @@ if (orderForm && orderStatus) {
 
 // Display the saved cart on page load
 updateKaimanamCart();
+// Feedback Star Rating
+
+const feedbackStars = [
+    ...document.querySelectorAll(
+        'input[name="feedbackRating"]'
+    )
+];
+
+const ratingStatus = document.getElementById("ratingStatus");
+
+const feedbackLinks = [
+    ...document.querySelectorAll(
+        "#reviews .review-button"
+    )
+];
+
+function updateFeedbackRating() {
+    const selectedStar = feedbackStars.find(
+        (star) => star.checked
+    );
+
+    const rating = selectedStar
+        ? Number(selectedStar.value)
+        : 0;
+
+    feedbackStars.forEach((star) => {
+        star.closest("label").classList.toggle(
+            "selected",
+            Number(star.value) <= rating
+        );
+    });
+
+    if (ratingStatus) {
+        ratingStatus.textContent = rating
+            ? `You selected ${rating} out of 5 stars.`
+            : "Select a star to rate your experience.";
+    }
+
+    const message = [
+        "Hello Kaimanam, I would like to share my feedback.",
+        "",
+        "Product: ",
+        rating
+            ? `Rating: ${rating}/5`
+            : "Rating (1–5): ",
+        "Review: "
+    ].join("\n");
+
+    feedbackLinks.forEach((link) => {
+        const url = new URL(link.href);
+        url.searchParams.set("text", message);
+        link.href = url.toString();
+    });
+}
+
+feedbackStars.forEach((star) => {
+    star.addEventListener("change", updateFeedbackRating);
+});
+
+updateFeedbackRating();
